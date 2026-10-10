@@ -119,3 +119,25 @@ Bottle, wine glass and wooden-case geometry was authored in `src/models.js` usin
 ## Product refinement v2 — 2026-10-10
 
 The user supplied a bottle close-up. Its slender silhouette, long shoulder, rolled burgundy capsule, plain warm label and narrow curved glass reflection informed a new procedural model. No pixels were copied from the reference. `src/studio.js` provides shared panel reflections and soft light. The open oak case contains twelve full bottle models in two layers, with a hinged plank lid, partitions and small hardware. The three bottle formats and improved stemmed glass are exported as separate GLB assets. Seal and fluid marks are original SVG geometry from `scripts/create-seal.mjs` and `scripts/refine-fluid-marks.mjs`. GLB exports contain base materials; the browser applies studio lighting and generated paper/wood/stamp textures.
+
+## Reference correction v3 — 2026-10-10
+
+Built-in ImageGen was used with the supplied character screenshot as its image reference. All outputs were inspected, copied into `design/assets`, and converted to WebP without altering the original PNGs. See `refinement-v3.md` for the hybrid photographic rendering method and its limits.
+
+### Winemaker v3 — exact prompt
+
+```
+Create ONLY the wine-maker editorial PHOTOGRAPH seen in the lower left panel of this reference screenshot, recreated in high photographic quality. Output a single landscape 4:3 photograph, no website, no lettering, no play button, no frame, no watermark. Match the reference panel's scene and composition closely: a mature European female winemaker with brown hair tied back, casually rolled-up cream linen shirt and dark charcoal apron, waist-up, standing slightly left of center in an old dark oak barrel cellar. She is looking down attentively, one hand raises a narrow stemmed wine glass at the left near her face, the other works near the foreground barrels. Candid active tasting/pouring moment, not a posed portrait or leaning on a barrel. Rich warm amber cellar lights in the upper center, rows of wooden barrels extend in perspective on the right, wooden cellar posts, black shadowy background, muted natural colors, subtle film grain, authentic hands, skin and fabric. The left edge has a cool daylight window/door strip. Keep framing and lighting especially close to the photograph within the attached screenshot.
+```
+
+### Burgundy bottle v3 — exact prompt
+
+```
+Isolate and meticulously recreate ONLY the upright wine bottle at the center of the attached reference screenshot as a high-resolution photorealistic product asset on an ACTUAL TRANSPARENT alpha background. Absolutely no website, background, text, people, floor, shadow, props or logo. Keep EXACTLY the reference bottle's upright silhouette and proportions: height-to-width about 4.14:1; bottle widest body 24% of total height; capsule width 9% of total height; burgundy capsule occupies top 23% of bottle height, neck tapered smoothly into the shoulder, dark almost-black green wine glass. A full-width PLAIN warm ivory paper label spans from 58% to 91% down the bottle (32.4% total height), leaving 9% visible glass below. The label is completely blank, no lettering whatsoever, subtle cylindrical shading light left and cream-grey right, horizontally level top and bottom. Rounded slightly recessed heel, not a flat straight bottom. Deep burgundy glossy foil capsule with a rounded rolled lip at the top and the distinct fine horizontal ring about a quarter down the foil. Match the reference's organic REAL GLASS REFLECTIONS precisely: thin white curving stripe running down the left-front shoulder and along the left edge of the bottle, a broad muted olive-grey inverted arch-shaped reflected window in the front of the glass immediately ABOVE the label, slim subtle reflection on the right edge. The glass BELOW the label has a soft grey-olive organic reflection and a broad pale grey curved crescent across the rounded bottom. Avoid perfectly straight white rectangle reflections, avoid chrome or black plastic appearance. This must look like the bottle in the reference, not a generic tall cone-shaped bottle. Front orthographic view, dead upright, full object entirely visible with small transparent margins. Premium photographic realism, crisp silhouette, dark transparent glass, real foil and uncoated paper. Produce only this one bottle.
+```
+
+### Gold capsule edit — exact prompt
+
+```
+Edit this wine-bottle asset: change ONLY the burgundy foil capsule at the very top to muted aged champagne-gold foil, matching a premium magnum bottle. Preserve the exact shape, rolled lip, seam ring, reflections, shading and texture of the capsule. Preserve absolutely every other detail: entire bottle's exact silhouette, proportions, glass reflections, blank warm ivory paper label, bottom reflection, upright orientation, position in image and transparent alpha background. No text, logo, extra bottle, shadow or background. The gold must be satin warm olive-champagne metal with dark shaded right side, subtle light left side, not bright yellow or brass. Keep the same canvas dimensions and same scale/placement as the input.
+```

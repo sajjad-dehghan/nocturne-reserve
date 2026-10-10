@@ -9,13 +9,14 @@ export function studioEnvironment(renderer){
   const mesh=new THREE.Mesh(new THREE.PlaneGeometry(width,height),material);
   mesh.position.set(...position);mesh.lookAt(0,0,0);studio.add(mesh);
  }
- panel([-3.8,1.4,4.6],.32,8,4.0);
- panel([-4.6,.5,2.7],2.1,6,.30);
- panel([3.5,.7,4.2],3.0,5,.12);
- panel([-.6,-3.2,3.0],3.0,1.15,1.1);
- panel([0,4.4,1.5],2.5,1,.28);
+ panel([-2.1,1.4,4.6],.72,8,7.0);
+ panel([-6.2,.5,.8],.30,6,7.0);
+ panel([.6,.5,5.5],2.40,3.6,.65);
+ panel([4.7,.7,2.4],.30,7,3.0);
+ panel([.2,-3.2,3.0],4.0,1.2,3.0);
+ panel([0,4.4,1.5],2.5,1,.60);
  const generator=new THREE.PMREMGenerator(renderer);
- const texture=generator.fromScene(studio,.035,.1,50).texture;
+ const texture=generator.fromScene(studio,.012,.1,50).texture;
  generator.dispose();studio.traverse(e=>{e.geometry?.dispose();e.material?.dispose()});
  return texture;
 }

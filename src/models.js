@@ -19,23 +19,26 @@ function uncoatedPaper(){
  paperTexture.wrapS=paperTexture.wrapT=THREE.RepeatWrapping;paperTexture.repeat.set(3,1);return paperTexture;
 }
 
-export function createBottle({ foil = '#690d14', label = '#d8ceb6', format='standard', detail=96 } = {}) {
+export function createBottle({ foil = '#731017', label = '#ded4bd', format='standard', detail=96 } = {}) {
   const group = new THREE.Group();
   group.name = 'Nocturne Cabernet bottle';
-  const profile = [[0,.09],[.15,.09],[.25,.036],[.30,.032],[.332,.057],[.349,.115],[.353,.23],[.353,.40],[.353,.65],[.353,.9],[.353,1.15],[.353,1.35],[.353,1.46],[.350,1.61],[.330,1.79],[.296,1.98],[.254,2.18],[.205,2.38],[.162,2.57],[.134,2.72],[.125,2.84],[.125,3.43],[.134,3.45],[.134,3.49],[0,3.5]];
+  // Measured silhouette: 141px wide / 583px tall in the supplied upright view.
+  // The shoulder swells low down; a straight cone gives the wrong wine-bottle form.
+  const profile = [[0,.105],[.21,.105],[.31,.039],[.37,.030],[.400,.057],[.415,.115],[.418,.23],[.418,.40],[.418,.65],[.418,.9],[.418,1.15],[.418,1.35],[.418,1.46],[.411,1.55],[.390,1.70],[.352,1.85],[.295,2.02],[.242,2.18],[.199,2.34],[.169,2.51],[.155,2.66],[.151,2.72],[.151,3.43],[.161,3.45],[.161,3.49],[0,3.5]];
   const geo = turnedGeometry(profile,detail,96);
   geo.translate(0,-BOTTLE_HEIGHT/2,0);
-  const glass = new THREE.MeshPhysicalMaterial({color:'#030b05',metalness:0,roughness:.055,clearcoat:1,clearcoatRoughness:.035,ior:1.52,envMapIntensity:1.05});
+  const glass = new THREE.MeshPhysicalMaterial({color:'#030d07',metalness:0,roughness:.026,clearcoat:.75,clearcoatRoughness:.018,ior:1.52,envMapIntensity:1.5});
   const body = new THREE.Mesh(geo,glass);body.name='Dark green glass';group.add(body);
-  const foilMaterial = new THREE.MeshPhysicalMaterial({color:foil,metalness:.58,roughness:.31,clearcoat:.18,clearcoatRoughness:.24,envMapIntensity:1});
-  const cap= new THREE.Mesh(turnedGeometry([[.127,2.78],[.130,2.785],[.132,2.81],[.132,3.36],[.138,3.405],[.144,3.42],[.144,3.463],[.139,3.485],[.115,3.497],[0,3.5]],detail,48),foilMaterial);
+  const foilMaterial = new THREE.MeshPhysicalMaterial({color:foil,metalness:.62,roughness:.24,clearcoat:.25,clearcoatRoughness:.18,envMapIntensity:1.35});
+  const cap= new THREE.Mesh(turnedGeometry([[.153,2.70],[.158,2.705],[.161,2.73],[.161,3.29],[.165,3.31],[.165,3.40],[.172,3.42],[.172,3.463],[.166,3.485],[.139,3.497],[0,3.5]],detail,64),foilMaterial);
   cap.position.y=-BOTTLE_HEIGHT/2;cap.name='Rolled metallic capsule with curved lip';group.add(cap);
-  for(const [y,r] of [[3.365,.133],[2.798,.132]]){const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.0023,6,detail),foilMaterial);ring.rotation.x=Math.PI/2;ring.position.y=y-BOTTLE_HEIGHT/2;group.add(ring)}
-  const labelGeo = new THREE.CylinderGeometry(.355,.355,1.155,detail,1,true,0,Math.PI*2);
+  for(const [y,r] of [[3.31,.164],[2.715,.159]]){const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.0035,8,detail),foilMaterial);ring.rotation.x=Math.PI/2;ring.position.y=y-BOTTLE_HEIGHT/2;group.add(ring)}
+  const heel=new THREE.Mesh(new THREE.TorusGeometry(.397,.012,10,detail),glass);heel.rotation.x=Math.PI/2;heel.position.y=.045-BOTTLE_HEIGHT/2;group.add(heel);
+  const labelGeo = new THREE.CylinderGeometry(.420,.420,1.145,detail,1,true,0,Math.PI*2);
   const paperMap=uncoatedPaper();
   const paper = new THREE.MeshStandardMaterial({color:label,roughness:.97,metalness:0,map:paperMap,bumpMap:paperMap,bumpScale:.00035,side:THREE.DoubleSide});
-  const labelMesh=new THREE.Mesh(labelGeo,paper);labelMesh.position.y=.895-BOTTLE_HEIGHT/2;labelMesh.name='Warm uncoated paper, full wrap';group.add(labelMesh);
-  const seam=new THREE.Mesh(new THREE.BoxGeometry(.002,1.154,.002),paper);seam.position.set(0,.895-BOTTLE_HEIGHT/2,-.356);group.add(seam);
+  const labelMesh=new THREE.Mesh(labelGeo,paper);labelMesh.position.y=.885-BOTTLE_HEIGHT/2;labelMesh.name='Warm uncoated paper, full wrap';group.add(labelMesh);
+  const seam=new THREE.Mesh(new THREE.BoxGeometry(.002,1.144,.002),paper);seam.position.set(0,.885-BOTTLE_HEIGHT/2,-.421);group.add(seam);
   if(format==='magnum')group.scale.set(1.27,1.12,1.27);
   if(format==='half')group.scale.set(.76,.76,.76);
   group.traverse(mesh=>{if(mesh.isMesh){mesh.castShadow=true;mesh.receiveShadow=false}});
@@ -80,8 +83,8 @@ export function createWoodCase(open=false,grain=null,stamp=null){
   const prototype=createBottle({foil:'#7e703c',detail:48});
   // Six full-size horizontal bottles per layer, two layers; the caps face the opening.
   for(let row=0;row<2;row++)for(let i=0;i<6;i++){
-   const bottle=prototype.clone();bottle.scale.setScalar(.565);bottle.rotation.x=-Math.PI/2;
-   bottle.position.set(-1.015+i*.406,-.235+row*.38,.005);group.add(bottle);
+   const bottle=prototype.clone();bottle.scale.setScalar(.475);bottle.rotation.x=-Math.PI/2;
+   bottle.position.set(-1.015+i*.406,-.235+row*.40,.005);group.add(bottle);
   }
   for(let i=0;i<5;i++)board(.018,.39,d-.15,-.812+i*.406,.12,0,endGrain);
   for(const x of [-.85,.85]){board(.18,.018,.21,x,h/2+.01,-d/2,metal);board(.18,.14,.018,x,h/2+.045,-d/2-.01,metal)}

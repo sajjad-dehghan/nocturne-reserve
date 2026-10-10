@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import {createBottle,createWoodCase} from './models.js';
 import {studioEnvironment,studioLighting} from './studio.js';
+import {applyBottlePhoto} from './bottle-photo.js';
 
 export async function renderCatalog(){
  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true});
@@ -20,6 +21,7 @@ export async function renderCatalog(){
   const model=kind==='wood'?createWoodCase(true,grain,stamp):kind==='case'?createWoodCase(false,grain,stamp):createBottle(kind==='bottle'?{}:{foil:'#847943',format:kind==='magnum'?'magnum':kind==='half'?'half':'standard'});
   const camera=new THREE.PerspectiveCamera(27,648/756,.1,100);camera.position.set(0,.22,8.7);camera.lookAt(0,0,0);
   if(kind==='bottle')model.rotation.y=-.10;
+  if(['bottle','magnum','half'].includes(kind))await applyBottlePhoto(model,{gold:kind!=='bottle'});
   if(kind==='wood'||kind==='case'){camera.position.set(3.2,2.9,7.0);camera.lookAt(0,kind==='wood'?.3:-.25,0);model.position.y=-.52;scene.add(new THREE.AmbientLight('#f8edd8',.5))}
   const box=new THREE.Box3().setFromObject(model);const ground=new THREE.Mesh(new THREE.PlaneGeometry(12,12),new THREE.ShadowMaterial({color:'#302c21',opacity:.09,depthWrite:false}));ground.rotation.x=-Math.PI/2;ground.position.y=box.min.y-.003;ground.receiveShadow=true;scene.add(ground);
   scene.add(model);renderer.render(scene,camera);
