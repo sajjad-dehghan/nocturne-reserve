@@ -1,5 +1,5 @@
 {
-  "name": "vesper-nocturne",
+  "name": "nocturne-reserve",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,8 +7,14 @@
     "dev": "vite --host 127.0.0.1 --port 4178",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4178",
-    "models": "node scripts/export-models.mjs"
+    "models": "node scripts/export-models.mjs",
+    "check": "node scripts/verify.mjs"
   },
-  "dependencies": { "three": "^0.180.0", "gsap": "^3.13.0" },
-  "devDependencies": { "vite": "^7.1.0" }
+  "dependencies": {
+    "three": "^0.180.0",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
 }

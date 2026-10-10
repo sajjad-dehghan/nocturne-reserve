@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440" role="img" aria-labelledby="title desc">
+  <title id="title">Nocturne Reserve</title>
+  <desc id="desc">An independent wine website study. Art direction, WebGL and scroll storytelling by Sajjad Dehghan.</desc>
+  <rect width="1440" height="440" fill="#47131d"/>
+  <rect x="18" y="18" width="1404" height="404" fill="#ede7d7"/>
+  <path d="M70 80H1370M70 358H1370" stroke="#782535" stroke-opacity=".35"/>
+  <g fill="#782535" font-family="Georgia, 'Times New Roman', serif">
+    <text x="70" y="60" font-size="16" letter-spacing="5">SAJJAD DEHGHAN / SELECTED WORK</text>
+    <text x="70" y="209" font-size="104" letter-spacing="-4">NOCTURNE</text>
+    <text x="75" y="307" font-size="88" letter-spacing="10">RESERVE</text>
+  </g>
+  <g fill="#24211b" font-family="Arial, sans-serif">
+    <text x="945" y="175" font-size="15" letter-spacing="3">A WINE WEBSITE STUDY</text>
+    <text x="945" y="215" font-size="24">Texture. Motion. Atmosphere.</text>
+    <text x="945" y="257" font-size="16">Art direction · WebGL · Interaction</text>
+    <text x="945" y="290" font-size="16">An independently implemented experience.</text>
+    <text x="70" y="391" font-size="14" letter-spacing="2">THREE.JS + GSAP + VITE</text>
+    <text x="1370" y="391" text-anchor="end" font-size="14" letter-spacing="2">DESKTOP / TABLET / MOBILE</text>
+  </g>
+</svg>
