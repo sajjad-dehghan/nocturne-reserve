@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.openai/local-state/
+output/
+*.tar.gz
+*.tgz

@@ -1,0 +1,1 @@
+Fonts: Anton, Inter, Libre Caslon Display and Cormorant Garamond. Distributed under the SIL Open Font License. Sources: https://fonts.google.com/. Original CSS source is retained alongside the fonts.
