@@ -113,4 +113,9 @@ Constraints: actual alpha transparent background, no background color or checker
 
 ## Procedural product assets
 
-Bottle, wine glass and wooden-case geometry was authored in `src/models.js` using Three.js. Reusable GLB files are in `public/models`. The development-only `src/catalog.js` renderer produced the five transparent product cutouts; original 540 x 630 PNG renders are preserved in `design/assets/product-*.png`, with WebP website variants in `public/assets`. These renders use the original oak texture above. The animated hero uses the live bottle geometry; the supporting wine-glass photograph uses the alpha asset above.
+Bottle, wine glass and wooden-case geometry was authored in `src/models.js` using Three.js. Reusable GLB files are in `public/models`. The development-only `src/catalog.js` renderer produced the five transparent product cutouts; original 1296 x 1512 PNG renders are preserved in `design/assets/product-*.png`, with WebP website variants in `public/assets`. These renders use the original oak texture above. The animated hero uses the live bottle geometry; the supporting wine-glass photograph uses the alpha asset above.
+
+
+## Product refinement v2 — 2026-10-10
+
+The user supplied a bottle close-up. Its slender silhouette, long shoulder, rolled burgundy capsule, plain warm label and narrow curved glass reflection informed a new procedural model. No pixels were copied from the reference. `src/studio.js` provides shared panel reflections and soft light. The open oak case contains twelve full bottle models in two layers, with a hinged plank lid, partitions and small hardware. The three bottle formats and improved stemmed glass are exported as separate GLB assets. Seal and fluid marks are original SVG geometry from `scripts/create-seal.mjs` and `scripts/refine-fluid-marks.mjs`. GLB exports contain base materials; the browser applies studio lighting and generated paper/wood/stamp textures.

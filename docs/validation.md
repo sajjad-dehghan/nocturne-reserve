@@ -24,3 +24,15 @@
 - Reduced-motion and WebGL-fallback paths are implemented but have not been exercised under an actual disabled GPU or operating-system reduced-motion setting.
 - Exact reference assets, fonts and winemaker video were not supplied. Rebuilt assets are visually related, not identical originals.
 - Commerce, email delivery and database persistence require backend integration.
+
+## Product refinement v2 — 2026-10-10
+
+- Rebuilt the bottle profile from the supplied close-up: slender body, long smooth shoulder, dark green glass, rolled burgundy capsule and continuous warm paper wrap. Studio reflections and soft physical shadows are shared by the hero and catalog.
+- Rebuilt oak cases with bevelled planks, end grain, hinged lid, hardware, partitions, and twelve full bottle models in two layers. Magnum and half formats have separate proportions and GLB exports.
+- Improved the stemmed glass model, botanical estate seal, organic fluid marks and capillary glass ring. The existing generated glass photograph remains the website asset.
+- Five transparent catalog renders are now 1296 × 1512 RGBA WebP; their PNG originals are preserved under design/assets.
+- Production build passed: app 15.85 KB, motion 114.01 KB and Three.js 485.47 KB before compression.
+- Verification passed: all referenced assets and anchors, five products, six GLB files, label/body clearance, and twelve-bottle case count.
+- Production preview visually checked at 1280 × 900 and 390 × 844. No horizontal overflow or broken visible images; browser error log empty. The magnum button selects the matching format in the reservation dialog.
+- Hero fallback now uses the same product image instead of an older simplified SVG. Actual GPU-disable testing remains unverified.
+- Evidence: output/qa/v2-desktop-hero.png, v2-desktop-products.png, v2-mobile-hero.png, v2-mobile-products.png.
