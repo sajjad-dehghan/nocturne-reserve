@@ -43,7 +43,7 @@
 - Three new generated assets were inspected: the winemaker scene, burgundy bottle and gold capsule variant. Two bottle PNGs contain real RGBA transparency; alpha bounds were checked before their UV crop was applied.
 - Main bottle and catalog bottles use reference-guided photographic plates; procedural meshes supply shadows and editable GLB assets. This implementation is explicitly documented as hybrid rather than a fully volumetric reproduction.
 - Photo/copy/title positioning, logo scale, wine/paper colors, ink wear and scrollbar treatment were corrected. Direct #character navigation restores the correct position after font layout.
-- Final build passed: application 16.90 KB, motion 114.01 KB, Three.js 488.48 KB before compression. Asset/anchor/model checks passed, including label clearance and case count; syntax and git diff whitespace checks passed.
+- Final build passed: application 17.09 KB, motion 114.01 KB, Three.js 488.48 KB before compression. Asset/anchor/model checks passed, including label clearance and case count; syntax and git diff whitespace checks passed.
 - Browser checked at 1218 × 716 and 390 × 844; no horizontal overflow or broken visible images. Direct character URL opens with heading top approximately 195px. Magnum selection opens its correct dialog format. Browser error log was empty in the observed run.
-- Proof: output/qa/v3-character.png, v3-mobile-hero.png and v3-mobile-products.png. The production preview serves /assets/index-D19evHYK.js.
+- Proof: output/qa/v3-character.png, v3-mobile-hero.png and v3-mobile-products.png. The production preview serves /assets/index-1dDQ9QKo.js.
 - The original-template assets and typeface remain unavailable; exact pixel identity and measured Lighthouse results are not claimed. Original photos and prior source ZIPs are preserved.

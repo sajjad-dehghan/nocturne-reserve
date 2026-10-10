@@ -73,7 +73,13 @@ initScene();updatePage();gsap.ticker.add(updateScene);
 if(import.meta.env.DEV && new URLSearchParams(location.search).has('render-products'))import('./catalog.js').then(({renderCatalog})=>renderCatalog());
 addEventListener('scroll',updatePage,{passive:true});addEventListener('resize',updatePage,{passive:true});reducedMotion.addEventListener('change',updatePage);mobile.addEventListener('change',updatePage);document.addEventListener('visibilitychange',()=>{dirty=true});
 const initialChapter=location.hash?document.getElementById(location.hash.slice(1)):null;
-document.fonts.ready.then(()=>{ScrollTrigger.refresh();if(initialChapter&&location.hash===`#${initialChapter.id}`)initialChapter.scrollIntoView({behavior:'instant',block:'start'});updatePage()});
+document.fonts.ready.then(()=>{ScrollTrigger.refresh();updatePage()});
+async function settleEntryChapter(){
+ if(document.readyState!=='complete')await new Promise(resolve=>addEventListener('load',resolve,{once:true}));
+ await document.fonts.ready;
+ requestAnimationFrame(()=>{ScrollTrigger.refresh();if(initialChapter&&location.hash===`#${initialChapter.id}`)initialChapter.scrollIntoView({behavior:'instant',block:'start'});updatePage()});
+}
+settleEntryChapter();
 for(const img of $$('main img'))img.addEventListener('load',()=>{updatePage();ScrollTrigger.refresh()});
 if(!reducedMotion.matches){
  gsap.fromTo('.estate-seal',{rotation:-21},{rotation:-6,ease:'none',scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
